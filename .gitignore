@@ -20,6 +20,16 @@
 *.out
 *.app
 
+# CMake related files
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
+# Output dir
+bin/
+
 # MAC OS
 **.DS_Store
 

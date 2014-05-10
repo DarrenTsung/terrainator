@@ -10,7 +10,7 @@ Terrainator
  * Other dependencies are git submodules (glfw).
 
 ## Build
-Install [Eigen](http://eigen.tuxfamily.org/)) on your computer.
+Install [Eigen](http://eigen.tuxfamily.org/) on your computer:
 ```
 'cd path/to/unzippedEigen'
 'mkdir build'
@@ -25,6 +25,8 @@ Just run `cmake` to build the Makefile, and then `make`. The executable will be
 placed inside `bin` folder.
 
 ## Commands
+ * up, down, left, right - rotate the model
+ * SHIFT + up, down, left, right - translate the model
 
 ## Acknowledgments
  * [CMake](http://cmake.org) - cross-platform open-source build system.

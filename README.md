@@ -34,6 +34,7 @@ placed inside `bin` folder.
  * [CMake](http://cmake.org) - cross-platform open-source build system.
  * [GLFW](http://www.glfw.org) - library for creating windows with OpenGL.
  * [Eigen](http://eigen.tuxfamily.org/) - library for linear algebra. 
- * http://webstaff.itn.liu.se/~stegu/TNM022-2005/perlinnoiselinks/perlin-noise-math-faq.html
- * https://github.com/rodrigosetti/azteroids
+ * http://webstaff.itn.liu.se/~stegu/TNM022-2005/perlinnoiselinks/perlin-noise-math-faq.html - great article on implementing perlin noise.
+ * https://github.com/rodrigosetti/azteroids - used as reference for cmake and
+   glfw, thanks!
 

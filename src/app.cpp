@@ -11,10 +11,11 @@ using namespace Eigen;
 void App::initialize() {
     // set up lights
     const GLfloat light_position0[] = { 0.0, 0.0, -10.0, 1.0 };
-    const GLfloat light_diffuse0[] = { 0.3, 0.3, 0.3, 1.0 };
+    const GLfloat light_diffuse0[] = { 0.1, 0.1, 0.1, 1.0 };
 
     const GLfloat light_position1[] = { 0.0, 0.0, 10.0, 1.0 };
-    const GLfloat light_diffuse1[] = { 0.3, 0.3, 1.0, 1.0 };
+    const GLfloat light_diffuse1[] = { 0.4, 0.4, 1.0, 1.0 };
+    const GLfloat light_specular1[] = { 0.5, 0.5, 0.5, 1.0 };
 
     glClearColor (0.0, 0.0, 0.0, 0.0);
     glShadeModel (GL_FLAT);
@@ -26,6 +27,7 @@ void App::initialize() {
 
     glLightfv(GL_LIGHT1, GL_POSITION, light_position1);
     glLightfv(GL_LIGHT1, GL_DIFFUSE, light_diffuse1);
+    glLightfv(GL_LIGHT1, GL_SPECULAR, light_specular1);
     glEnable(GL_LIGHT1);
 
     glEnable(GL_DEPTH_TEST);

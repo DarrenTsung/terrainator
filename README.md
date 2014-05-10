@@ -5,11 +5,12 @@ Terrainator
 
  * OpenGL and GLUT.
  * Cmake.
+ * Eigen.
  * C++ compiler with C++11 support.
  * Other dependencies are git submodules (glfw).
 
 ## Build
-Install Eigen on your computer (download the latest version here: eigen.tuxfamily.org/).
+Install [Eigen](http://eigen.tuxfamily.org/)) on your computer.
 ```
 'cd path/to/unzippedEigen'
 'mkdir build'
@@ -28,4 +29,5 @@ placed inside `bin` folder.
 ## Acknowledgments
  * [CMake](http://cmake.org) - cross-platform open-source build system.
  * [GLFW](http://www.glfw.org) - library for creating windows with OpenGL.
+ * [Eigen](http://eigen.tuxfamily.org/) - library for linear algebra. 
 

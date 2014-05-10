@@ -1,5 +1,6 @@
 Terrainator
 =======================
+![Screen Shot](img/screenshot-1.png?raw=true)
 
 ## Dependencies
 

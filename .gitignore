@@ -33,5 +33,8 @@ bin/
 # MAC OS
 **.DS_Store
 
+*.DS_Store
+lib/.DS_Store
+
 # vim
 **.swp

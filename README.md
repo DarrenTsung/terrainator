@@ -1,4 +1,4 @@
-funky-terrain-generator
+Terrainator
 =======================
 
 ## Dependencies
@@ -9,6 +9,14 @@ funky-terrain-generator
  * Other dependencies are git submodules (glfw).
 
 ## Build
+Install Eigen on your computer (download the latest version here: eigen.tuxfamily.org/).
+```
+'cd path/to/unzippedEigen'
+'mkdir build'
+'cd build'
+'cmake ..'
+'make install'
+```
 
 Clone this repository and update the git submodules (`git submodule update`).
 

@@ -2,6 +2,8 @@
 #define APP_H
 
 #include "pnoise.h"
+#include <Eigen/Core>
+#include <vector>
 
 struct Keys {
     bool up    = false;
@@ -9,6 +11,7 @@ struct Keys {
     bool left  = false;
     bool right = false;
     bool space = false;
+    bool shift = false;
 };
 
 class App {
@@ -16,9 +19,14 @@ class App {
         PNoise noise;
         int width, height;
 
+        std::vector<std::vector<Eigen::Vector3f> > vertices;
+
     public:
         // struct for key input
         Keys keys_pressed;
+        // degrees
+        float camera_roll, camera_pitch;
+        Eigen::Vector3f camera_position;
 
         // constructors
         App() {};
@@ -28,8 +36,11 @@ class App {
         void initialize();
         // update the application by delta time
         void update(double delta);
-        // log a formatted string to stderr
-        void log(const std::string fmt_str, ...);
+        // draws everything in the application
+        void draw();
 };
+
+// log a formatted string to stderr
+void log(const std::string fmt_str, ...);
 
 #endif // APP_H

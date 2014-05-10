@@ -1,5 +1,6 @@
 #include "pnoise.h"
 #include <math.h>
+#include "app.h"
 
 using namespace Eigen;
 
@@ -23,10 +24,12 @@ float PNoise::get_height2D(float x, float y) {
     // the dot product of the vectors from each point to the input point to the
     // pseudo-random gradients of each point
     // http://webstaff.itn.liu.se/~stegu/TNM022-2005/perlinnoiselinks/perlin-noise-math-faq.html
-    float s = tl.dot(Vector2f(x, y) - Vector2f(x0, y1));
-    float t = tr.dot(Vector2f(x, y) - Vector2f(x1, y1));
-    float u = bl.dot(Vector2f(x, y) - Vector2f(x0, y0));
-    float v = br.dot(Vector2f(x, y) - Vector2f(x1, y0));
+    float s = bl.dot(Vector2f(x, y) - Vector2f(x0, y0));
+    float t = br.dot(Vector2f(x, y) - Vector2f(x1, y0));
+    float u = tl.dot(Vector2f(x, y) - Vector2f(x0, y1));
+    float v = tr.dot(Vector2f(x, y) - Vector2f(x1, y1));
+
+    //log("%f, %f, %f, %f\n", s, t, u, v);
 
     // we use the easing cure 3p^2 - 2p^3
     // Sx is the weighted average for x components, we use it on s and t since they have the same x
@@ -36,10 +39,14 @@ float PNoise::get_height2D(float x, float y) {
     // b is the final weighted value after averaging u and v
     float b = u + Sx*(v - u);
 
+    //log("Sx: %g, %g, %g\n", Sx, a, b);
+
     // now we find our weighted average for y components
     float Sy = 3*pow((y - y0), 2) - 2*pow((y - y0), 3);
     // find weighted average of a and b
-    float z = a + Sx*(b - a);
+    float z = a + Sy*(b - a);
+
+    //log("Sy: %g, z:%g\n", Sy, z);
 
     return z;
 }
@@ -50,8 +57,8 @@ Vector2f PNoise::get_gradient2D(int x, int y) {
     srand(seed);
 
     // x0 and x1 are floats between [0, amplitude)
-    float x0 = (rand() / RAND_MAX) * amplitude;
-    float x1 = (rand() / RAND_MAX) * amplitude;
+    float x0 = (((float)rand() / RAND_MAX) * amplitude) - (amplitude/2);
+    float x1 = (((float)rand() / RAND_MAX) * amplitude) - (amplitude/2);
 
     return Vector2f(x0, x1);
 }

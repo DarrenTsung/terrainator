@@ -1,4 +1,5 @@
 #include <GLFW/glfw3.h>
+#include <GLUT/glut.h>
 #include <Eigen/Core>
 
 #include <stdlib.h>
@@ -9,10 +10,12 @@
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
 
-const int GENERATED_WIDTH = 10;
-const int GENERATED_HEIGHT = 10;
+const int GENERATED_WIDTH = 5;
+const int GENERATED_HEIGHT = 5;
 
 const float FRAMERATE = 60;
+
+#define PI 3.14159265359
 
 App application(GENERATED_WIDTH, GENERATED_HEIGHT);
 
@@ -49,6 +52,13 @@ static void key_callback (GLFWwindow* window, int key, int scancode, int action,
                 break;
         }
     }
+
+    if (mods & GLFW_MOD_SHIFT) {
+        application.keys_pressed.shift = true;
+    } else {
+        application.keys_pressed.shift = false;
+    }
+
 }
 
 int main(int argc, char **argv) {
@@ -80,9 +90,23 @@ int main(int argc, char **argv) {
         // run until user clicks exit on window
         int width, height;
         glfwGetFramebufferSize(window, &width, &height);
-        glViewport(0, 0, width, height);
+        float ratio = width / (float) height;
 
+        glViewport(0, 0, width, height);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        glMatrixMode( GL_PROJECTION );
+        glLoadIdentity();
+        glOrtho(-ratio, ratio, -1.5, 1.5, 10, -10);
+
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        Eigen::Vector3f pos = application.camera_position;
+        glTranslatef(pos[0], pos[1], pos[2]);
+        glRotatef(application.camera_pitch, 1.0f, 0.0f, 0.0f);
+        glRotatef(application.camera_roll, 0.0f, 0.0f, -1.0f);
+
+
 
         // get the time difference between the last time we ran the loop
         double delta = 0.0;
@@ -94,6 +118,7 @@ int main(int argc, char **argv) {
         prevTime = time;
 
         application.update(delta);
+        application.draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

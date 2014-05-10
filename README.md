@@ -1,5 +1,6 @@
 Terrainator
 =======================
+OpenGL implementation / visualization of [perlin noise](http://en.wikipedia.org/wiki/Perlin_noise) made in C++.
 ![Screen Shot](img/screenshot-1.png?raw=true)
 
 ## Dependencies

@@ -55,8 +55,8 @@ void App::initialize() {
 }
 
 void App::update(double delta) {
-    float mvmt_speed = 30.0f;
-    float cspeed = 1.0f;
+    float mvmt_speed = 20.0f;
+    float cspeed = 0.7f;
     if (keys_pressed.up) {
         if (keys_pressed.shift) {
             camera_position += Vector3f(0, cspeed, 0)*delta;
